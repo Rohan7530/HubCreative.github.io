@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <button onclick="location.href='{% url 'script' %}'">Execute Script</button> <hr>
+   <!--the onclick locates the reference with the name of the button to execute the function,the code is correct-->
+   {% if data %}
+
+   {{data | safe}}  <!--safe allows you to convert json to html-->
+
+   {% endif %}
+
+   <form action="/external/" method="post">
+    {% csrf_token %}
+    Text:
+    <input type="text" name="param"><br><br>
+    {{data_external}}<br><br>
+    {{data1}}
+    <input type="submit" value="Execute">
+   </form>
+</body>
+</html>
